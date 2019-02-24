@@ -7,7 +7,7 @@ import Cell from './Cell';
 class GameComponent extends Component {
   componentWillMount() {
     const { createGrid } = this.props;
-    createGrid(10, 10);
+    createGrid(19, 19);
   }
 
   render() {
@@ -16,17 +16,19 @@ class GameComponent extends Component {
     const { grid } = this.props;
     if (grid) {
       const values = [];
-      grid.map(value => values.push(value));
+      let c = 0;
+      grid.map(value => { values.push((c % 2)); c++; if (c === 2) c = 0; });
+      console.log(values);
       const size = grid.size();
       let rowValues = [];
       values.map((v, i) => {
         if ((i) % size[0] === 0 && i > 0) {
-          gridContainer.push(<div style={{ height: 30 }}>{[...rowValues]}</div>);
+          gridContainer.push(<div style={{ height: 20 }}>{[...rowValues]}</div>);
           rowValues = [];
         }
-        return rowValues.push(<Cell value={1} />);
+        return rowValues.push(<Cell value={v} />);
       });
-      gridContainer.push(<div style={{ height: 30 }}>{[...rowValues]}</div>);
+      gridContainer.push(<div style={{ height: 20 }}>{[...rowValues]}</div>);
     }
     return (
       <div>
