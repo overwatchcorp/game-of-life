@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import math from 'mathjs';
 import { createGrid as createGridAction } from '../actions';
+import Cell from './Cell';
 
 class GameComponent extends Component {
   componentWillMount() {
@@ -24,12 +24,7 @@ class GameComponent extends Component {
           gridContainer.push(<div style={{ height: 30 }}>{[...rowValues]}</div>);
           rowValues = [];
         }
-        return rowValues.push(
-          <div style={{
-            width: 30, height: 30, backgroundColor: 'gray', display: 'inline-block', border: '.5px solid white', boxSizing: 'border-box',
-          }}
-          />,
-        );
+        return rowValues.push(<Cell value={1} />);
       });
       gridContainer.push(<div style={{ height: 30 }}>{[...rowValues]}</div>);
     }

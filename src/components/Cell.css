@@ -1,0 +1,13 @@
+.displaycell {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  background: gray;
+  border: 0.5px solid white;
+  box-sizing: border-box;
+}
+
+.displaycell.active {
+  background: white;
+  border: 0.5px solid black;
+}
